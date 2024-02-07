@@ -1,5 +1,10 @@
+import { Button } from './components/ui/button'
+import './global.css'
+
 export const App = () => {
   return (
-    <h1>Pizza Shop</h1>
+    <div className='flex justify-center items-center h-screen'>
+      <Button>Order pizza</Button>
+    </div>
   )
 }
