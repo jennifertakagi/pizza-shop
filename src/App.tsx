@@ -6,7 +6,7 @@ import { Toaster } from 'sonner'
 
 import { router } from './routes'
 
-export function App() {
+export const App = () => {
   return (
     <HelmetProvider>
       <Helmet titleTemplate="%s | pizza.shop" />
