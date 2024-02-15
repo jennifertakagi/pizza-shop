@@ -5,6 +5,7 @@ import { Table, TableBody, TableHeader } from '@/components/ui/table'
 import { OrderTableBody } from './components/OrderTableBody'
 import { OrderTableFilters } from './components/OrderTableFilters'
 import { OrderTableHeader } from './components/OrderTableHeader'
+import { OrderTablePagination } from './components/OrderTablePagination'
 
 export const OrdersPage = () => {
   return (
@@ -28,7 +29,7 @@ export const OrdersPage = () => {
               ))}
             </TableBody>
           </Table>
-          OrderTableFilters
+          <OrderTablePagination pageIndex={0} totalCount={105} perPage={10} />
         </div>
       </div>
     </>

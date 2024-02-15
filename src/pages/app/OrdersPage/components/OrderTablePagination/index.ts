@@ -1,0 +1,1 @@
+export { OrderTablePagination } from './OrderTablePagination'

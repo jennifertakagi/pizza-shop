@@ -9,7 +9,7 @@ export const OrderTableBody = () => {
       <TableCell>
         <Button variant="outline" size="xs">
           <Search className="h-3 w-3" />
-          <span className="sr-only">Detalhes do pedido</span>
+          <span className="sr-only">Details</span>
         </Button>
       </TableCell>
       <TableCell className="font-mono text-xs font-medium">
