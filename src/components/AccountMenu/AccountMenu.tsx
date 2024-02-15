@@ -27,7 +27,7 @@ export const AccountMenu = () => {
         <DropdownMenuLabel className="flex flex-col">
           <span>Jennifer Takagi</span>
           <span className="text-xs font-normal text-muted-foreground">
-            jennitakagi@gmail.com
+            jenni@gmail.com
           </span>
         </DropdownMenuLabel>
         <DropdownMenuSeparator />

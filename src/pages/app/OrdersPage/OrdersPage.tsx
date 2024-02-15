@@ -29,8 +29,8 @@ export const OrdersPage = () => {
               ))}
             </TableBody>
           </Table>
-          <OrderTablePagination pageIndex={0} totalCount={105} perPage={10} />
         </div>
+        <OrderTablePagination pageIndex={0} totalCount={105} perPage={10} />
       </div>
     </>
   )
