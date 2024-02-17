@@ -1,0 +1,1 @@
+export { usePostRestaurant } from './usePostRestaurant'

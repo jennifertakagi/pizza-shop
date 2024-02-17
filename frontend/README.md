@@ -1,6 +1,4 @@
-# pizza-shop-web
-
-Manage your Pizza shop orders 🍕
+# pizza-shop-frontend
 
 # React + TypeScript + Vite
 

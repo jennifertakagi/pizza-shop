@@ -1,14 +1,13 @@
-import { useMutation } from '@tanstack/react-query'
 import { Helmet } from 'react-helmet-async'
 import { useForm } from 'react-hook-form'
 import { Link, useNavigate } from 'react-router-dom'
 import { toast } from 'sonner'
 import { z } from 'zod'
 
-import { registerRestaurant } from '@/api/register-restaurant'
 import { Button } from '@/components/ui/button'
 import { Input } from '@/components/ui/input'
 import { Label } from '@/components/ui/label'
+import { usePostRestaurant } from '@/server-state/hooks/usePostRestaurant'
 
 const signUpForm = z.object({
   restaurantName: z.string(),
@@ -28,13 +27,11 @@ export const SignUpPage = () => {
     formState: { isSubmitting },
   } = useForm<SignUpForm>()
 
-  const { mutateAsync: registerRestaurantFn } = useMutation({
-    mutationFn: registerRestaurant,
-  })
+  const { mutateAsync: postRestaurant } = usePostRestaurant()
 
   async function handleSignUp(data: SignUpForm) {
     try {
-      await registerRestaurantFn({
+      await postRestaurant({
         restaurantName: data.restaurantName,
         managerName: data.managerName,
         email: data.email,
