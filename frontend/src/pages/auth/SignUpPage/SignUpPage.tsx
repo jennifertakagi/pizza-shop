@@ -41,7 +41,7 @@ export const SignUpPage = () => {
       toast.success('Restaurant registered successfully!', {
         action: {
           label: 'Login',
-          onClick: () => navigate('/sign-in'),
+          onClick: () => navigate(`/sign-in?email=${data.email}`),
         },
       })
     } catch (error) {

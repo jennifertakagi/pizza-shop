@@ -11,10 +11,11 @@ import {
 } from '../ui/dropdown-menu'
 import { useGetProfile } from '@/server-state/hooks/useGetProfile'
 import { useGetManagedRestaurant } from '@/server-state/hooks/useGetManagedRestaurant'
+import { Skeleton } from '../ui/skeleton'
 
 export const AccountMenu = () => {
-  const { data: profile } = useGetProfile()
-  const { data: managedRestaurant } = useGetManagedRestaurant()
+  const { data: profile, isLoading: isLoadingGetProfile } = useGetProfile()
+  const { data: managedRestaurant, isLoading: isLoadingGetManagedRestaurant } = useGetManagedRestaurant()
 
   return (
     <DropdownMenu>
@@ -23,17 +24,31 @@ export const AccountMenu = () => {
           variant="outline"
           className="flex select-none items-center gap-2"
         >
-          {managedRestaurant?.name}
+          {isLoadingGetManagedRestaurant ? (
+            <Skeleton className="h-4 w-40" />
+          ) : (
+            managedRestaurant?.name
+          )}
           <ChevronDown className="h-4 w-4" />
         </Button>
       </DropdownMenuTrigger>
 
       <DropdownMenuContent align="end" className="w-56">
         <DropdownMenuLabel className="flex flex-col">
-          <span>{profile?.name}</span>
-          <span className="text-xs font-normal text-muted-foreground">
-            {profile?.email}
-          </span>
+          {isLoadingGetProfile ? (
+              <div className="space-y-1.5">
+                <Skeleton className="h-4 w-32" />
+                <Skeleton className="h-3 w-24" />
+              </div>
+            ) : (
+              <>
+                <span>{profile?.name}</span>
+                <span className="text-xs font-normal text-muted-foreground">
+                  {profile?.email}
+                </span>
+              </>
+            )
+          }
         </DropdownMenuLabel>
         <DropdownMenuSeparator />
         <DropdownMenuItem>
