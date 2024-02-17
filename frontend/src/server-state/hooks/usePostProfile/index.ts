@@ -1,1 +1,0 @@
-export { usePostProfile } from './usePostProfile'

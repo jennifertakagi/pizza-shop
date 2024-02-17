@@ -9,15 +9,15 @@ import {
   DropdownMenuSeparator,
   DropdownMenuTrigger,
 } from '../ui/dropdown-menu'
-import { useGetProfile } from '@/server-state/hooks/useGetProfile'
-import { useGetManagedRestaurant } from '@/server-state/hooks/useGetManagedRestaurant'
+import { useGetUserProfile } from '@/server-state/hooks/useGetUserProfile'
+import { useGetRestaurant } from '@/server-state/hooks/useGetRestaurant'
 import { Skeleton } from '../ui/skeleton'
 import { Dialog, DialogTrigger } from '../ui/dialog'
 import { StoreProfileDialog } from '../StoreProfileDialog'
 
 export const AccountMenu = () => {
-  const { data: profile, isLoading: isLoadingGetProfile } = useGetProfile()
-  const { data: managedRestaurant, isLoading: isLoadingGetManagedRestaurant } = useGetManagedRestaurant()
+  const { data: userProfile, isLoading: isLoadingGetUserProfile } = useGetUserProfile()
+  const { data: restaurant, isLoading: isLoadingGetRestaurant } = useGetRestaurant()
 
   return (
     <Dialog>
@@ -27,10 +27,10 @@ export const AccountMenu = () => {
             variant="outline"
             className="flex select-none items-center gap-2"
           >
-            {isLoadingGetManagedRestaurant ? (
+            {isLoadingGetRestaurant ? (
               <Skeleton className="h-4 w-40" />
             ) : (
-              managedRestaurant?.name
+              restaurant?.name
             )}
             <ChevronDown className="h-4 w-4" />
           </Button>
@@ -38,16 +38,16 @@ export const AccountMenu = () => {
 
         <DropdownMenuContent align="end" className="w-56">
           <DropdownMenuLabel className="flex flex-col">
-            {isLoadingGetProfile ? (
+            {isLoadingGetUserProfile ? (
                 <div className="space-y-1.5">
                   <Skeleton className="h-4 w-32" />
                   <Skeleton className="h-3 w-24" />
                 </div>
               ) : (
                 <>
-                  <span>{profile?.name}</span>
+                  <span>{userProfile?.name}</span>
                   <span className="text-xs font-normal text-muted-foreground">
-                    {profile?.email}
+                    {userProfile?.email}
                   </span>
                 </>
               )
