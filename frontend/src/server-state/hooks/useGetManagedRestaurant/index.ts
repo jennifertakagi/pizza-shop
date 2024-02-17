@@ -1,0 +1,1 @@
+export { useGetManagedRestaurant } from './useGetManagedRestaurant'

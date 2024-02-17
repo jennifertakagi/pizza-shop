@@ -38,8 +38,6 @@ export const SignUpPage = () => {
         phone: data.phone,
       })
 
-      await new Promise((resolve) => setTimeout(resolve, 2000))
-
       toast.success('Restaurant registered successfully!', {
         action: {
           label: 'Login',
