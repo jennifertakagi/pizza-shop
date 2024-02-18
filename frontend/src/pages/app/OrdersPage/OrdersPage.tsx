@@ -6,8 +6,11 @@ import { OrderTableBody } from './components/OrderTableBody'
 import { OrderTableFilters } from './components/OrderTableFilters'
 import { OrderTableHeader } from './components/OrderTableHeader'
 import { OrderTablePagination } from './components/OrderTablePagination'
+import { useGetOrdersList } from '@/server-state/hooks/useGetOrdersList'
 
 export const OrdersPage = () => {
+  const { data: ordersList } = useGetOrdersList()
+
   return (
     <>
       <Helmet title="Orders" />
@@ -24,9 +27,9 @@ export const OrdersPage = () => {
               <OrderTableHeader />
             </TableHeader>
             <TableBody>
-              {Array.from({ length: 10 }).map((_, i) => (
-                <OrderTableBody key={i} />
-              ))}
+            {ordersList?.orders.map((order) =>
+              <OrderTableBody key={order.orderId} order={order} />
+            )}
             </TableBody>
           </Table>
         </div>

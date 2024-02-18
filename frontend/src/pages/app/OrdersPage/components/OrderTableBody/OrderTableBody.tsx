@@ -1,11 +1,24 @@
 import { ArrowRight, Search, X } from 'lucide-react'
+import { formatDistanceToNow } from 'date-fns'
+import { enUS } from 'date-fns/locale'
 
 import { Button } from '@/components/ui/button'
 import { TableCell, TableRow } from '@/components/ui/table'
 
 import { OrderDetailsDialog } from '../OrderDetailsDialog'
+import { OrderStatus } from '../OrderStatus'
 
-export const OrderTableBody = () => {
+interface OrderTableBodyProps {
+  order: {
+    orderId: string
+    createdAt: string
+    status: 'pending' | 'canceled' | 'processing' | 'delivering' | 'delivered'
+    customerName: string
+    total: number
+  }
+}
+
+export const OrderTableBody = ({ order }: OrderTableBodyProps) => {
   return (
     <TableRow>
       <TableCell>
@@ -17,17 +30,24 @@ export const OrderTableBody = () => {
         </OrderDetailsDialog>
       </TableCell>
       <TableCell className="font-mono text-xs font-medium">
-        821e78f7asdhdf128h
+        {order.orderId}
       </TableCell>
-      <TableCell className="text-muted-foreground">15 minutes ago</TableCell>
+      <TableCell className="text-muted-foreground">
+        {formatDistanceToNow(order.createdAt, {
+          locale: enUS,
+          addSuffix: true,
+        })}
+      </TableCell>
       <TableCell>
-        <div className="flex items-center gap-2">
-          <span className="h-2 w-2 rounded-full bg-slate-400" />
-          <span className="font-medium text-muted-foreground">Pending</span>
-        </div>
+        <OrderStatus status={order.status} />
       </TableCell>
-      <TableCell className="font-medium">Jennifer Takagi</TableCell>
-      <TableCell className="font-medium">$ 149.90</TableCell>
+      <TableCell className="font-medium">{order.customerName}</TableCell>
+      <TableCell className="font-medium">
+        {order.total.toLocaleString('en-US', {
+          style: 'currency',
+          currency: 'USD',
+        })}
+      </TableCell>
       <TableCell>
         <Button variant="outline" size="xs">
           <ArrowRight className="mr-2 h-3 w-3" />
