@@ -7,7 +7,7 @@ import { z } from 'zod'
 import { Button } from '@/components/ui/button'
 import { Input } from '@/components/ui/input'
 import { Label } from '@/components/ui/label'
-import { usePostUserAuthentication } from '@/server-state/hooks/usePostUserAuthentication'
+import { usePostUserSignIn } from '@/server-state/hooks/usePostUserSignIn'
 const signInForm = z.object({
   email: z.string().email(),
 })
@@ -27,11 +27,11 @@ export const SignInPage = () => {
     },
   })
 
-  const { mutateAsync: postUserAuthentication } = usePostUserAuthentication()
+  const { mutateAsync: postUserSignIn } = usePostUserSignIn()
 
   async function handleSignIn(data: SignInForm) {
     try {
-      await postUserAuthentication({ email: data.email })
+      await postUserSignIn({ email: data.email })
 
       toast.success('We have sent an authentication link to your email', {
         action: {

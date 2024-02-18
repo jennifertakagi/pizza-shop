@@ -14,10 +14,12 @@ import { useGetRestaurant } from '@/server-state/hooks/useGetRestaurant'
 import { Skeleton } from '../ui/skeleton'
 import { Dialog, DialogTrigger } from '../ui/dialog'
 import { StoreProfileDialog } from '../StoreProfileDialog'
+import { usePostUserSignOut } from '@/server-state/hooks/usePostUserSignOut'
 
 export const AccountMenu = () => {
   const { data: userProfile, isLoading: isLoadingGetUserProfile } = useGetUserProfile()
   const { data: restaurant, isLoading: isLoadingGetRestaurant } = useGetRestaurant()
+  const { mutateAsync: postUserSignOut, isPending: isPendingPostUserSignOut } = usePostUserSignOut()
 
   return (
     <Dialog>
@@ -60,9 +62,15 @@ export const AccountMenu = () => {
               <span>Restaurant Profile</span>
             </DropdownMenuItem>
           </DialogTrigger>
-          <DropdownMenuItem className="text-rose-500 dark:text-rose-400">
-            <LogOut className="mr-2 h-4 w-4" />
-            <span>Logout</span>
+          <DropdownMenuItem
+            asChild
+            disabled={isPendingPostUserSignOut}
+            className="text-rose-500 dark:text-rose-400"
+          >
+            <button className="w-full" onClick={() => postUserSignOut()}>
+              <LogOut className="mr-2 h-4 w-4" />
+              <span>Sair</span>
+            </button>
           </DropdownMenuItem>
         </DropdownMenuContent>
       </DropdownMenu>
