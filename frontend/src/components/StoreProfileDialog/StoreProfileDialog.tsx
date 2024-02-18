@@ -1,7 +1,12 @@
 import { zodResolver } from '@hookform/resolvers/zod'
 import { useForm } from 'react-hook-form'
+import { toast } from 'sonner'
 import { z } from 'zod'
 
+import { useGetRestaurant } from '@/server-state/hooks/useGetRestaurant'
+import { usePutProfile } from '@/server-state/hooks/usePutRestaurant'
+
+import { Button } from '../ui/button'
 import {
   DialogClose,
   DialogContent,
@@ -12,11 +17,7 @@ import {
 } from '../ui/dialog'
 import { Input } from '../ui/input'
 import { Label } from '../ui/label'
-import { useGetRestaurant } from '@/server-state/hooks/useGetRestaurant'
-import { Button } from '../ui/button'
 import { Textarea } from '../ui/textarea'
-import { toast } from 'sonner'
-import { usePutProfile } from '@/server-state/hooks/usePutRestaurant'
 
 const storeProfileSchema = z.object({
   name: z.string().min(1),
@@ -55,7 +56,7 @@ export function StoreProfileDialog() {
       <DialogHeader>
         <DialogTitle>Restaurant information</DialogTitle>
         <DialogDescription>
-        Update your Restaurant's information visible to your customer
+          Update your Restaurant information visible to your customer
         </DialogDescription>
       </DialogHeader>
 

@@ -25,9 +25,9 @@ export const OrderStatus = ({ status }: OrderStatusProps) => {
       case 'canceled':
         return <span className="h-2 w-2 rounded-full bg-rose-500" />
       case 'delivered':
-        return <span className="h-2 w-2 rounded-full bg-emerald-500" />;
+        return <span className="h-2 w-2 rounded-full bg-emerald-500" />
       default:
-        return <span className="h-2 w-2 rounded-full bg-amber-500" />;
+        return <span className="h-2 w-2 rounded-full bg-amber-500" />
     }
   }
 

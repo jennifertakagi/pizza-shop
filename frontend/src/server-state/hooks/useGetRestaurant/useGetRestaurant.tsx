@@ -1,7 +1,8 @@
-import { getRestaurant } from "@/server-state/api/get-restaurant"
-import { useQuery } from "@tanstack/react-query"
+import { useQuery } from '@tanstack/react-query'
 
-export const useGetRestaurant =() => {
+import { getRestaurant } from '@/server-state/api/get-restaurant'
+
+export const useGetRestaurant = () => {
   return useQuery({
     queryKey: ['pizza-shop-app-restaurant'],
     queryFn: getRestaurant,

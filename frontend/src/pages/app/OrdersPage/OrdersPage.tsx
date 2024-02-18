@@ -3,22 +3,31 @@ import { useSearchParams } from 'react-router-dom'
 import { z } from 'zod'
 
 import { Table, TableBody, TableHeader } from '@/components/ui/table'
+import { useGetOrdersList } from '@/server-state/hooks/useGetOrdersList'
 
 import { OrderTableBody } from './components/OrderTableBody'
 import { OrderTableFilters } from './components/OrderTableFilters'
 import { OrderTableHeader } from './components/OrderTableHeader'
 import { OrderTablePagination } from './components/OrderTablePagination'
-import { useGetOrdersList } from '@/server-state/hooks/useGetOrdersList'
 
 export const OrdersPage = () => {
   const [searchParams, setSearchParams] = useSearchParams()
 
-  const pageIndex = z.coerce
-  .number()
-  .transform((page) => page - 1)
-  .parse(searchParams.get('page') ?? '1')
+  const orderId = searchParams.get('orderId')
+  const customerName = searchParams.get('customerName')
+  const status = searchParams.get('status')
 
-  const { data: ordersList } = useGetOrdersList(pageIndex)
+  const pageIndex = z.coerce
+    .number()
+    .transform((page) => page - 1)
+    .parse(searchParams.get('page') ?? '1')
+
+  const { data: ordersList } = useGetOrdersList({
+    customerName,
+    orderId,
+    pageIndex,
+    status,
+  })
 
   function handlePagination(pageIndex: number) {
     setSearchParams((state) => {
@@ -44,9 +53,9 @@ export const OrdersPage = () => {
               <OrderTableHeader />
             </TableHeader>
             <TableBody>
-            {ordersList?.orders.map((order) =>
-              <OrderTableBody key={order.orderId} order={order} />
-            )}
+              {ordersList?.orders.map((order) => (
+                <OrderTableBody key={order.orderId} order={order} />
+              ))}
             </TableBody>
           </Table>
         </div>

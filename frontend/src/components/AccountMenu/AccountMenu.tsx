@@ -1,6 +1,12 @@
 import { Building, ChevronDown, LogOut } from 'lucide-react'
 
+import { useGetRestaurant } from '@/server-state/hooks/useGetRestaurant'
+import { useGetUserProfile } from '@/server-state/hooks/useGetUserProfile'
+import { usePostUserSignOut } from '@/server-state/hooks/usePostUserSignOut'
+
+import { StoreProfileDialog } from '../StoreProfileDialog'
 import { Button } from '../ui/button'
+import { Dialog, DialogTrigger } from '../ui/dialog'
 import {
   DropdownMenu,
   DropdownMenuContent,
@@ -9,17 +15,15 @@ import {
   DropdownMenuSeparator,
   DropdownMenuTrigger,
 } from '../ui/dropdown-menu'
-import { useGetUserProfile } from '@/server-state/hooks/useGetUserProfile'
-import { useGetRestaurant } from '@/server-state/hooks/useGetRestaurant'
 import { Skeleton } from '../ui/skeleton'
-import { Dialog, DialogTrigger } from '../ui/dialog'
-import { StoreProfileDialog } from '../StoreProfileDialog'
-import { usePostUserSignOut } from '@/server-state/hooks/usePostUserSignOut'
 
 export const AccountMenu = () => {
-  const { data: userProfile, isLoading: isLoadingGetUserProfile } = useGetUserProfile()
-  const { data: restaurant, isLoading: isLoadingGetRestaurant } = useGetRestaurant()
-  const { mutateAsync: postUserSignOut, isPending: isPendingPostUserSignOut } = usePostUserSignOut()
+  const { data: userProfile, isLoading: isLoadingGetUserProfile } =
+    useGetUserProfile()
+  const { data: restaurant, isLoading: isLoadingGetRestaurant } =
+    useGetRestaurant()
+  const { mutateAsync: postUserSignOut, isPending: isPendingPostUserSignOut } =
+    usePostUserSignOut()
 
   return (
     <Dialog>
@@ -41,19 +45,18 @@ export const AccountMenu = () => {
         <DropdownMenuContent align="end" className="w-56">
           <DropdownMenuLabel className="flex flex-col">
             {isLoadingGetUserProfile ? (
-                <div className="space-y-1.5">
-                  <Skeleton className="h-4 w-32" />
-                  <Skeleton className="h-3 w-24" />
-                </div>
-              ) : (
-                <>
-                  <span>{userProfile?.name}</span>
-                  <span className="text-xs font-normal text-muted-foreground">
-                    {userProfile?.email}
-                  </span>
-                </>
-              )
-            }
+              <div className="space-y-1.5">
+                <Skeleton className="h-4 w-32" />
+                <Skeleton className="h-3 w-24" />
+              </div>
+            ) : (
+              <>
+                <span>{userProfile?.name}</span>
+                <span className="text-xs font-normal text-muted-foreground">
+                  {userProfile?.email}
+                </span>
+              </>
+            )}
           </DropdownMenuLabel>
           <DropdownMenuSeparator />
           <DialogTrigger asChild>

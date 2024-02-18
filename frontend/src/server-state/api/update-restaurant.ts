@@ -5,6 +5,9 @@ interface UpdateProfileBody {
   description: string | null
 }
 
-export async function updateRestaurant({ description, name }: UpdateProfileBody) {
+export async function updateRestaurant({
+  description,
+  name,
+}: UpdateProfileBody) {
   await api.put('/profile', { name, description })
 }

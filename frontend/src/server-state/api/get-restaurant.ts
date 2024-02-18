@@ -10,9 +10,7 @@ export interface GetRestaurantResponse {
 }
 
 export async function getRestaurant() {
-  const response = await api.get<GetRestaurantResponse>(
-    '/managed-restaurant',
-  )
+  const response = await api.get<GetRestaurantResponse>('/managed-restaurant')
 
   return response.data
 }

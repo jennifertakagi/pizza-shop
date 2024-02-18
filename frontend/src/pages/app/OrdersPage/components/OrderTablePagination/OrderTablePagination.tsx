@@ -1,4 +1,3 @@
-import { Button } from '@/components/ui/button'
 import {
   ChevronLeft,
   ChevronRight,
@@ -6,6 +5,7 @@ import {
   ChevronsRight,
 } from 'lucide-react'
 
+import { Button } from '@/components/ui/button'
 
 interface PaginationProps {
   onPageChange: (pageIndex: number) => Promise<void> | void
@@ -14,7 +14,7 @@ interface PaginationProps {
   totalCount?: number
 }
 
-export const OrderTablePagination =({
+export const OrderTablePagination = ({
   onPageChange,
   pageIndex = 0,
   perPage = 10,

@@ -1,8 +1,9 @@
-import { userSignOut } from "@/server-state/api/user-sign-out"
-import { useMutation } from "@tanstack/react-query"
-import { useNavigate } from "react-router-dom"
+import { useMutation } from '@tanstack/react-query'
+import { useNavigate } from 'react-router-dom'
 
-export const usePostUserSignOut =() => {
+import { userSignOut } from '@/server-state/api/user-sign-out'
+
+export const usePostUserSignOut = () => {
   const navigate = useNavigate()
 
   return useMutation({

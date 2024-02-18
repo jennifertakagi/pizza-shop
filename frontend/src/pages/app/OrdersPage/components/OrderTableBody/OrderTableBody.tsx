@@ -1,6 +1,6 @@
-import { ArrowRight, Search, X } from 'lucide-react'
 import { formatDistanceToNow } from 'date-fns'
 import { enUS } from 'date-fns/locale'
+import { ArrowRight, Search, X } from 'lucide-react'
 
 import { Button } from '@/components/ui/button'
 import { TableCell, TableRow } from '@/components/ui/table'
