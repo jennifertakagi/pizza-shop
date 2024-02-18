@@ -1,4 +1,6 @@
 import { Helmet } from 'react-helmet-async'
+import { useSearchParams } from 'react-router-dom'
+import { z } from 'zod'
 
 import { Table, TableBody, TableHeader } from '@/components/ui/table'
 
@@ -9,7 +11,22 @@ import { OrderTablePagination } from './components/OrderTablePagination'
 import { useGetOrdersList } from '@/server-state/hooks/useGetOrdersList'
 
 export const OrdersPage = () => {
-  const { data: ordersList } = useGetOrdersList()
+  const [searchParams, setSearchParams] = useSearchParams()
+
+  const pageIndex = z.coerce
+  .number()
+  .transform((page) => page - 1)
+  .parse(searchParams.get('page') ?? '1')
+
+  const { data: ordersList } = useGetOrdersList(pageIndex)
+
+  function handlePagination(pageIndex: number) {
+    setSearchParams((state) => {
+      state.set('page', (pageIndex + 1).toString())
+
+      return state
+    })
+  }
 
   return (
     <>
@@ -33,7 +50,12 @@ export const OrdersPage = () => {
             </TableBody>
           </Table>
         </div>
-        <OrderTablePagination pageIndex={0} totalCount={105} perPage={10} />
+        <OrderTablePagination
+          onPageChange={handlePagination}
+          pageIndex={ordersList?.meta.pageIndex}
+          perPage={ordersList?.meta.perPage}
+          totalCount={ordersList?.meta.totalCount}
+        />
       </div>
     </>
   )
