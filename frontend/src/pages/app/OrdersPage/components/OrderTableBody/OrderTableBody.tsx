@@ -82,7 +82,16 @@ export const OrderTableBody = ({ order }: OrderTableBodyProps) => {
       default:
         return null
     }
-  }, [order.status])
+  }, [
+    isPendingPatchApproveOrder,
+    isPendingPatchDeliverOrder,
+    isPendingPatchDispatchOrder,
+    order.orderId,
+    order.status,
+    patchApproveOrder,
+    patchDeliverOrder,
+    patchDispatchOrder,
+  ])
 
   return (
     <TableRow>
