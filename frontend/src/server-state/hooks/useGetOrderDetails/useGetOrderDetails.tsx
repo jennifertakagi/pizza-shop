@@ -11,7 +11,7 @@ export const useGetOrderDetails = ({
   options,
 }: GetOrderDetailsParams) => {
   return useQuery({
-    queryKey: ['order', orderId],
+    queryKey: ['pizza-shop-app-order', orderId],
     queryFn: () => getOrderDetails({ orderId }),
     enabled: options?.enabled,
   })

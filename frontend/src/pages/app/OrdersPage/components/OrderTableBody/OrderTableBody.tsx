@@ -2,7 +2,8 @@ import { ArrowRight, Search, X } from 'lucide-react'
 
 import { Button } from '@/components/ui/button'
 import { TableCell, TableRow } from '@/components/ui/table'
-import { formatDateToNow } from '@/utils'
+import { usePatchCancelOrder } from '@/server-state/hooks/usePatchCancelOrder'
+import { formatCurrency, formatDateToNow } from '@/utils'
 
 import { OrderDetailsDialog } from '../OrderDetailsDialog'
 import { OrderStatus } from '../OrderStatus'
@@ -18,6 +19,8 @@ interface OrderTableBodyProps {
 }
 
 export const OrderTableBody = ({ order }: OrderTableBodyProps) => {
+  const { mutateAsync: patchCancelOrder } = usePatchCancelOrder()
+
   return (
     <TableRow>
       <TableCell>
@@ -39,10 +42,7 @@ export const OrderTableBody = ({ order }: OrderTableBodyProps) => {
       </TableCell>
       <TableCell className="font-medium">{order.customerName}</TableCell>
       <TableCell className="font-medium">
-        {order.total.toLocaleString('en-US', {
-          style: 'currency',
-          currency: 'USD',
-        })}
+        {formatCurrency(order.total)}
       </TableCell>
       <TableCell>
         <Button variant="outline" size="xs">
@@ -51,7 +51,12 @@ export const OrderTableBody = ({ order }: OrderTableBodyProps) => {
         </Button>
       </TableCell>
       <TableCell>
-        <Button variant="ghost" size="xs">
+        <Button
+          disabled={!['pending', 'processing'].includes(order.status)}
+          onClick={() => patchCancelOrder({ orderId: order.orderId })}
+          variant="ghost"
+          size="xs"
+        >
           <X className="mr-2 h-3 w-3" />
           Cancel
         </Button>
