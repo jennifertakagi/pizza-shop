@@ -15,6 +15,7 @@ import {
   CardHeader,
   CardTitle,
 } from '@/components/ui/card'
+import { formatCurrency } from '@/utils'
 
 const data = [
   { date: '10/12', revenue: 1200 },
@@ -46,12 +47,7 @@ export const RevenueChart = () => {
               axisLine={false}
               tickLine={false}
               width={80}
-              tickFormatter={(value: number) =>
-                value.toLocaleString('en-US', {
-                  style: 'currency',
-                  currency: 'USD',
-                })
-              }
+              tickFormatter={(value: number) => formatCurrency(value)}
             />
             <CartesianGrid vertical={false} className="stroke-muted" />
             <Line

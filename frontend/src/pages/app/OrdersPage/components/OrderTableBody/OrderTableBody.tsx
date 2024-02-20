@@ -1,9 +1,8 @@
-import { formatDistanceToNow } from 'date-fns'
-import { enUS } from 'date-fns/locale'
 import { ArrowRight, Search, X } from 'lucide-react'
 
 import { Button } from '@/components/ui/button'
 import { TableCell, TableRow } from '@/components/ui/table'
+import { formatDateToNow } from '@/utils'
 
 import { OrderDetailsDialog } from '../OrderDetailsDialog'
 import { OrderStatus } from '../OrderStatus'
@@ -22,7 +21,7 @@ export const OrderTableBody = ({ order }: OrderTableBodyProps) => {
   return (
     <TableRow>
       <TableCell>
-        <OrderDetailsDialog>
+        <OrderDetailsDialog orderId={order.orderId}>
           <Button variant="outline" size="xs">
             <Search className="h-3 w-3" />
             <span className="sr-only">Details</span>
@@ -33,10 +32,7 @@ export const OrderTableBody = ({ order }: OrderTableBodyProps) => {
         {order.orderId}
       </TableCell>
       <TableCell className="text-muted-foreground">
-        {formatDistanceToNow(order.createdAt, {
-          locale: enUS,
-          addSuffix: true,
-        })}
+        {formatDateToNow(order.createdAt)}
       </TableCell>
       <TableCell>
         <OrderStatus status={order.status} />
