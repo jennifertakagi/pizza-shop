@@ -1,15 +1,15 @@
 import { useMutation, useQueryClient } from '@tanstack/react-query'
 
-import { cancelOrder } from '@/server-state/api/cancel-order'
+import { deliverOrder } from '@/server-state/api/deliver-order'
 import { updateOrdersStatusesCache } from '@/utils'
 
-export const usePatchCancelOrder = () => {
+export const usePatchDeliverOrder = () => {
   const queryClient = useQueryClient()
 
   return useMutation({
-    mutationFn: cancelOrder,
+    mutationFn: deliverOrder,
     async onSuccess(_, { orderId }) {
-      updateOrdersStatusesCache({ orderId, status: 'canceled', queryClient })
+      updateOrdersStatusesCache({ orderId, status: 'delivered', queryClient })
     },
   })
 }
