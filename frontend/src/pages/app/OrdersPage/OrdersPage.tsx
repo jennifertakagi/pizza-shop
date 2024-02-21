@@ -2,6 +2,7 @@ import { Helmet } from 'react-helmet-async'
 import { useSearchParams } from 'react-router-dom'
 import { z } from 'zod'
 
+import { AppSkeleton } from '@/components/AppSkeleton'
 import { Table, TableBody, TableHeader } from '@/components/ui/table'
 import { useGetOrdersList } from '@/server-state/hooks/useGetOrdersList'
 
@@ -22,12 +23,14 @@ export const OrdersPage = () => {
     .transform((page) => page - 1)
     .parse(searchParams.get('page') ?? '1')
 
-  const { data: ordersList } = useGetOrdersList({
-    customerName,
-    orderId,
-    pageIndex,
-    status,
-  })
+  const { data: ordersList, isLoading: isLoadingOrdersList } = useGetOrdersList(
+    {
+      customerName,
+      orderId,
+      pageIndex,
+      status,
+    },
+  )
 
   function handlePagination(pageIndex: number) {
     setSearchParams((state) => {
@@ -59,6 +62,9 @@ export const OrdersPage = () => {
             </TableBody>
           </Table>
         </div>
+
+        {isLoadingOrdersList && <AppSkeleton type="orders" />}
+
         <OrderTablePagination
           onPageChange={handlePagination}
           pageIndex={ordersList?.meta.pageIndex}
