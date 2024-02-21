@@ -1,1 +1,1 @@
-export { DayOrdersAmountCard } from './MonthRevenueCard'
+export { DayOrdersAmountCard } from './DayOrdersAmountCard'

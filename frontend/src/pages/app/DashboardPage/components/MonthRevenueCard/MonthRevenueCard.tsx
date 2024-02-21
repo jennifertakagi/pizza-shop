@@ -1,5 +1,6 @@
 import { DollarSign } from 'lucide-react'
 
+import { AppSkeleton } from '@/components/AppSkeleton'
 import { Card, CardContent, CardHeader, CardTitle } from '@/components/ui/card'
 import { useGetMonthRevenue } from '@/server-state/hooks/useGetMonthRevenue'
 import { formatCurrency } from '@/utils'
@@ -16,7 +17,7 @@ export const MonthRevenueCard = () => {
         <DollarSign className="h-4 w-4 text-muted-foreground" />
       </CardHeader>
       <CardContent className="space-y-1">
-        {monthRevenue && (
+        {monthRevenue ? (
           <>
             <span className="text-2xl font-bold tracking-tight">
               {formatCurrency(monthRevenue.receipt / 100)}
@@ -39,6 +40,8 @@ export const MonthRevenueCard = () => {
               )}
             </p>
           </>
+        ) : (
+          <AppSkeleton type="metrics" />
         )}
       </CardContent>
     </Card>

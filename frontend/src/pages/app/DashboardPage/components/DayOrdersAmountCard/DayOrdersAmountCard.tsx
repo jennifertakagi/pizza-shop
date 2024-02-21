@@ -1,5 +1,6 @@
 import { Utensils } from 'lucide-react'
 
+import { AppSkeleton } from '@/components/AppSkeleton'
 import { Card, CardContent, CardHeader, CardTitle } from '@/components/ui/card'
 import { useGetDayOrdersAmount } from '@/server-state/hooks/useGetDayOrdersAmount'
 
@@ -13,7 +14,7 @@ export const DayOrdersAmountCard = () => {
         <Utensils className="h-4 w-4 text-muted-foreground" />
       </CardHeader>
       <CardContent className="space-y-1">
-        {dayOrdersAmount && (
+        {dayOrdersAmount ? (
           <>
             <span className="text-2xl font-bold tracking-tight">
               {dayOrdersAmount.amount.toLocaleString('en-US')}
@@ -36,6 +37,8 @@ export const DayOrdersAmountCard = () => {
               )}
             </p>
           </>
+        ) : (
+          <AppSkeleton type="metrics" />
         )}
       </CardContent>
     </Card>
