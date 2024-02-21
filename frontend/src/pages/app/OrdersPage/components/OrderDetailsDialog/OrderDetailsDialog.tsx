@@ -1,5 +1,6 @@
 import { ReactNode, useState } from 'react'
 
+import { AppSkeleton } from '@/components/AppSkeleton'
 import {
   Dialog,
   DialogContent,
@@ -47,7 +48,7 @@ export const OrderDetailsDialog = ({
           <DialogDescription>Order details</DialogDescription>
         </DialogHeader>
 
-        {order && (
+        {order ? (
           <div className="space-y-6">
             <Table>
               <TableBody>
@@ -127,6 +128,8 @@ export const OrderDetailsDialog = ({
               </TableFooter>
             </Table>
           </div>
+        ) : (
+          <AppSkeleton type="order-detail" />
         )}
       </DialogContent>
     </Dialog>
