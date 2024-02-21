@@ -11,6 +11,7 @@ import {
 } from 'recharts'
 import colors from 'tailwindcss/colors'
 
+import { AppSkeleton } from '@/components/AppSkeleton'
 import {
   Card,
   CardContent,
@@ -55,7 +56,7 @@ export const RevenueChart = () => {
         </div>
       </CardHeader>
       <CardContent>
-        {chartData && (
+        {chartData ? (
           <ResponsiveContainer width="100%" height={240}>
             <LineChart data={chartData} style={{ fontSize: 12 }}>
               <XAxis dataKey="date" axisLine={false} tickLine={false} dy={16} />
@@ -75,6 +76,8 @@ export const RevenueChart = () => {
               />
             </LineChart>
           </ResponsiveContainer>
+        ) : (
+          <AppSkeleton type="chart" />
         )}
       </CardContent>
     </Card>

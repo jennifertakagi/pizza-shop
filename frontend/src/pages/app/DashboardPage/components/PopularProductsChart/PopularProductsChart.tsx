@@ -2,6 +2,7 @@ import { BarChart } from 'lucide-react'
 import { Cell, Pie, PieChart, ResponsiveContainer } from 'recharts'
 import colors from 'tailwindcss/colors'
 
+import { AppSkeleton } from '@/components/AppSkeleton'
 import { Card, CardContent, CardHeader, CardTitle } from '@/components/ui/card'
 import { useGetPopularProducts } from '@/server-state/hooks/useGetPopularProducts'
 
@@ -27,7 +28,7 @@ export const PopularProductsChart = () => {
         </div>
       </CardHeader>
       <CardContent>
-        {popularProducts && (
+        {popularProducts ? (
           <ResponsiveContainer width="100%" height={240}>
             <PieChart style={{ fontSize: 12 }}>
               <Pie
@@ -84,6 +85,8 @@ export const PopularProductsChart = () => {
               </Pie>
             </PieChart>
           </ResponsiveContainer>
+        ) : (
+          <AppSkeleton type="chart" />
         )}
       </CardContent>
     </Card>
