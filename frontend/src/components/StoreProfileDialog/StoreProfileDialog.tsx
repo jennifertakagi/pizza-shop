@@ -26,7 +26,7 @@ const storeProfileSchema = z.object({
 
 type StoreProfileSchema = z.infer<typeof storeProfileSchema>
 
-export function StoreProfileDialog() {
+export const StoreProfileDialog = () => {
   const { data: restaurant } = useGetRestaurant()
   const { mutateAsync: putProfile } = usePutProfile()
 

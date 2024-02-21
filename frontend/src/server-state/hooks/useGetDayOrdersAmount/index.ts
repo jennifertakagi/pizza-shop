@@ -1,0 +1,1 @@
+export { useGetDayOrdersAmount } from './useGetDayOrdersAmount'

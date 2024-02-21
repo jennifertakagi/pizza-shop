@@ -1,0 +1,1 @@
+export { useGetMonthOrdersAmount } from './useGetMonthOrdersAmount'
