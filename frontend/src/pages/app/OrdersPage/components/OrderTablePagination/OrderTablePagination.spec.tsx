@@ -5,7 +5,7 @@ import { OrderTablePagination } from '.'
 
 const onPageChangeCallback = vi.fn()
 
-describe('Pagination', () => {
+describe('OrderTablePagination', () => {
   it('should display the right amount of pages and results', () => {
     const wrapper = render(
       <OrderTablePagination
