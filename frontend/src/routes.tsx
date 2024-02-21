@@ -3,6 +3,7 @@ import { createBrowserRouter } from 'react-router-dom'
 import { AppLayout } from './pages/_layouts/AppLayout'
 import { AuthLayout } from './pages/_layouts/AuthLayout'
 import { DashboardPage } from './pages/app/DashboardPage'
+import { ErrorPage } from './pages/app/ErrorPage'
 import { NotFoundPage } from './pages/app/NotFoundPage'
 import { OrdersPage } from './pages/app/OrdersPage'
 import { SignInPage } from './pages/auth/SignInPage'
@@ -12,7 +13,7 @@ export const router = createBrowserRouter([
   {
     path: '/',
     element: <AppLayout />,
-    errorElement: <NotFoundPage />,
+    errorElement: <ErrorPage />,
     children: [
       {
         path: '/',
@@ -37,5 +38,9 @@ export const router = createBrowserRouter([
         element: <SignUpPage />,
       },
     ],
+  },
+  {
+    path: '*',
+    element: <NotFoundPage />,
   },
 ])
