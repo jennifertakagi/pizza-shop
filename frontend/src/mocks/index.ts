@@ -8,11 +8,17 @@ import { getMonthCanceledOrdersAmountMock } from './get-month-cancelled-orders-a
 import { getMonthOrdersAmountMock } from './get-month-orders-amount-mock'
 import { getMonthRevenueMock } from './get-month-revenue-mock'
 import { getPopularProductsMock } from './get-popular-products-mock'
+import { getRestaurantMock } from './get-restaurant-mock'
+import { getUserProfileMock } from './get-user-profile-mock'
 import { registerRestaurantMock } from './register-restaurant-mock'
-import { signInMock } from './sign-in-mock'
+import { updateRestaurantMock } from './update-restaurant-mock'
+import { userSignInMock } from './user-sign-in-mock'
 
 export const worker = setupWorker(
-  signInMock,
+  getRestaurantMock,
+  getUserProfileMock,
+  updateRestaurantMock,
+  userSignInMock,
   registerRestaurantMock,
   getDayOrdersAmountMock,
   getMonthOrdersAmountMock,

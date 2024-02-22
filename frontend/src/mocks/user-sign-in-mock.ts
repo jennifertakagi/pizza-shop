@@ -2,7 +2,7 @@ import { http, HttpResponse } from 'msw'
 
 import { SignInBody } from '@/server-state/api/user-sign-in'
 
-export const signInMock = http.post<never, SignInBody>(
+export const userSignInMock = http.post<never, SignInBody>(
   '/authenticate',
   async ({ request }) => {
     const { email } = await request.json()

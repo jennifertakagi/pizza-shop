@@ -1,6 +1,6 @@
 import { api } from '@/lib/axios'
 
-interface UpdateProfileBody {
+export interface UpdateRestaurantBody {
   name: string
   description: string | null
 }
@@ -8,6 +8,6 @@ interface UpdateProfileBody {
 export async function updateRestaurant({
   description,
   name,
-}: UpdateProfileBody) {
+}: UpdateRestaurantBody) {
   await api.put('/profile', { name, description })
 }
