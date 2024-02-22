@@ -79,7 +79,7 @@ export const SignUpPage = () => {
             </div>
 
             <div className="space-y-2">
-              <Label htmlFor="managerName">Name</Label>
+              <Label htmlFor="managerName">Manager name</Label>
               <Input
                 id="managerName"
                 type="text"
