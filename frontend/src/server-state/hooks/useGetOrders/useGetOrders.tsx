@@ -1,11 +1,8 @@
 import { useQuery } from '@tanstack/react-query'
 
-import {
-  getOrdersList,
-  GetOrdersQuery,
-} from '@/server-state/api/get-orders-list'
+import { getOrders, GetOrdersQuery } from '@/server-state/api/get-orders'
 
-export const useGetOrdersList = ({
+export const useGetOrders = ({
   customerName,
   orderId,
   pageIndex,
@@ -13,14 +10,14 @@ export const useGetOrdersList = ({
 }: GetOrdersQuery) => {
   return useQuery({
     queryKey: [
-      'pizza-shop-app-orders-list',
+      'pizza-shop-app-orders',
       pageIndex,
       orderId,
       customerName,
       status,
     ],
     queryFn: () =>
-      getOrdersList({
+      getOrders({
         pageIndex,
         orderId,
         customerName,

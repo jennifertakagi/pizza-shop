@@ -1,7 +1,7 @@
 import { QueryClient } from '@tanstack/react-query'
 
 import { OrderStatus } from '@/pages/app/OrdersPage/components/OrderStatus'
-import { GetOrdersResponse } from '@/server-state/api/get-orders-list'
+import { GetOrdersResponse } from '@/server-state/api/get-orders'
 
 interface UpdateOrdersStatusesCacheParams {
   orderId: string
@@ -14,11 +14,11 @@ export function updateOrdersStatusesCache({
   queryClient,
   status,
 }: UpdateOrdersStatusesCacheParams) {
-  const ordersListCache = queryClient.getQueriesData<GetOrdersResponse>({
+  const ordersCache = queryClient.getQueriesData<GetOrdersResponse>({
     queryKey: ['pizza-shop-app-orders'],
   })
 
-  ordersListCache.forEach(([cacheKey, cacheData]) => {
+  ordersCache.forEach(([cacheKey, cacheData]) => {
     if (!cacheData) {
       return
     }

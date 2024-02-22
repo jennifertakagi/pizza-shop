@@ -22,7 +22,7 @@ export interface GetOrdersResponse {
   }
 }
 
-export async function getOrdersList({
+export async function getOrders({
   customerName,
   orderId,
   pageIndex,

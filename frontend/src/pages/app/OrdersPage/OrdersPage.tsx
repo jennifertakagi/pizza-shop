@@ -4,7 +4,7 @@ import { z } from 'zod'
 
 import { AppSkeleton } from '@/components/AppSkeleton'
 import { Table, TableBody, TableHeader } from '@/components/ui/table'
-import { useGetOrdersList } from '@/server-state/hooks/useGetOrdersList'
+import { useGetOrders } from '@/server-state/hooks/useGetOrders'
 
 import { OrderTableBody } from './components/OrderTableBody'
 import { OrderTableFilters } from './components/OrderTableFilters'
@@ -23,14 +23,12 @@ export const OrdersPage = () => {
     .transform((page) => page - 1)
     .parse(searchParams.get('page') ?? '1')
 
-  const { data: ordersList, isLoading: isLoadingOrdersList } = useGetOrdersList(
-    {
-      customerName,
-      orderId,
-      pageIndex,
-      status,
-    },
-  )
+  const { data: orders, isLoading: isLoadingOrders } = useGetOrders({
+    customerName,
+    orderId,
+    pageIndex,
+    status,
+  })
 
   function handlePagination(pageIndex: number) {
     setSearchParams((state) => {
@@ -56,20 +54,20 @@ export const OrdersPage = () => {
               <OrderTableHeader />
             </TableHeader>
             <TableBody>
-              {ordersList?.orders.map((order) => (
+              {orders?.orders.map((order) => (
                 <OrderTableBody key={order.orderId} order={order} />
               ))}
             </TableBody>
           </Table>
         </div>
 
-        {isLoadingOrdersList && <AppSkeleton type="orders" />}
+        {isLoadingOrders && <AppSkeleton type="orders" />}
 
         <OrderTablePagination
           onPageChange={handlePagination}
-          pageIndex={ordersList?.meta.pageIndex}
-          perPage={ordersList?.meta.perPage}
-          totalCount={ordersList?.meta.totalCount}
+          pageIndex={orders?.meta.pageIndex}
+          perPage={orders?.meta.perPage}
+          totalCount={orders?.meta.totalCount}
         />
       </div>
     </>
