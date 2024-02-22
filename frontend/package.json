@@ -9,7 +9,10 @@
     "dev:test": "vite --port 50789 --mode test",
     "lint": "eslint . --ext ts,tsx --report-unused-disable-directives --max-warnings 0",
     "preview": "vite preview",
-    "test": "vitest"
+    "test": "vitest",
+    "test:e2e": "playwright test",
+    "test:e2e:ui": "playwright test --ui"
+
   },
   "dependencies": {
     "@hookform/resolvers": "^3.3.4",
@@ -42,6 +45,7 @@
     "zod": "^3.22.4"
   },
   "devDependencies": {
+    "@playwright/test": "^1.41.2",
     "@rocketseat/eslint-config": "^2.1.0",
     "@testing-library/jest-dom": "^6.4.2",
     "@testing-library/react": "^14.2.1",
