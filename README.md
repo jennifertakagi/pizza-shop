@@ -145,25 +145,6 @@ Features:
    <img src="docs/pizza-shop.gif" />
 </p>
 
-<p align="left">
-   <img src="docs/register-page.png" />
-</p>
-
-<p align="left">
-   <img src="docs/login-page.png" />
-</p>
-
-<p align="left">
-   <img src="docs/homepage.png" />
-</p>
-
-<p align="left">
-   <img src="docs/orders-page.png" />
-</p>
-
-<p align="left">
-   <img src="docs/edit-page.png" />
-</p>
 
 <!-- ROADMAP -->
 
