@@ -86,6 +86,7 @@ Features:
 - [Recharts](https://recharts.org/en-US/)
 - [Playwright](https://playwright.dev/)
 - [TypeScript](typescriptlang.org/)
+- [Vite](https://vitejs.dev/)
 
 <!-- GETTING STARTED -->
 
@@ -204,15 +205,15 @@ Jennifer Takagi - [@jennitakagi](https://twitter.com/jennitakagi)
 <!-- MARKDOWN LINKS & IMAGES -->
 <!-- https://www.markdownguide.org/basic-syntax/#reference-style-links -->
 
-[contributors-shield]: https://img.shields.io/github/contributors/jennifertakagi/worldtrip.svg?style=for-the-badge
+[contributors-shield]: https://img.shields.io/github/contributors/jennifertakagi/pizza-shop.svg?style=for-the-badge
 [contributors-url]: https://github.com/jennifertakagi/pizza-shop/graphs/contributors
-[forks-shield]: https://img.shields.io/github/forks/jennifertakagi/worldtrip.svg?style=for-the-badge
+[forks-shield]: https://img.shields.io/github/forks/jennifertakagi/pizza-shop.svg?style=for-the-badge
 [forks-url]: https://github.com/jennifertakagi/pizza-shop/network/members
-[stars-shield]: https://img.shields.io/github/stars/jennifertakagi/worldtrip.svg?style=for-the-badge
+[stars-shield]: https://img.shields.io/github/stars/jennifertakagi/pizza-shop.svg?style=for-the-badge
 [stars-url]: https://github.com/jennifertakagi/pizza-shop/stargazers
-[issues-shield]: https://img.shields.io/github/issues/jennifertakagi/worldtrip.svg?style=for-the-badge
+[issues-shield]: https://img.shields.io/github/issues/jennifertakagi/pizza-shop.svg?style=for-the-badge
 [issues-url]: https://github.com/jennifertakagi/pizza-shop/issues
-[license-shield]: https://img.shields.io/github/license/jennifertakagi/worldtrip.svg?style=for-the-badge
+[license-shield]: https://img.shields.io/github/license/jennifertakagi/pizza-shop.svg?style=for-the-badge
 [license-url]: https://github.com/jennifertakagi/pizza-shop/blob/master/LICENSE.txt
 [linkedin-shield]: https://img.shields.io/badge/-LinkedIn-black.svg?style=for-the-badge&logo=linkedin&colorB=555
 [linkedin-url]: https://linkedin.com/in/jennifertakagi
