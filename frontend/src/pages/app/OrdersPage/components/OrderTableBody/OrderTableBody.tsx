@@ -75,7 +75,7 @@ export const OrderTableBody = ({ order }: OrderTableBodyProps) => {
             onClick={() => patchDeliverOrder({ orderId: order.orderId })}
           >
             <ArrowRight className="mr-2 h-3 w-3" />
-            Entregue
+            Delivered
           </Button>
         )
 
